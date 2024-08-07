@@ -1,4 +1,5 @@
 import { GitHubLogoIcon, LinkedInLogoIcon, EnvelopeClosedIcon, GlobeIcon } from "@radix-ui/react-icons"
+import { Searchbar } from "./searchbar"
 
 type social = {
     link: string,
@@ -13,10 +14,14 @@ export function Socials(){
         {link: 'mailto:chikezie.o.onuoha@gmail.com', icon: <EnvelopeClosedIcon />}
     ]
     return (
-        <nav className="flex gap-3">
+        <div className="flex">
+            <Searchbar />
+            <nav className="flex">
             {socials.map((social) => (
-                <a href={social.link} target="_blank" className="">{social.icon}</a>
+                <a key={social.link} href={social.link} target="_blank" className="p-2 rounded-md hover:bg-gray-100">{social.icon}</a>
             ))}
-        </nav>
+            </nav>
+        </div>
+
     )
 }
