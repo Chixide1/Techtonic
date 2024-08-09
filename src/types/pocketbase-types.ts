@@ -41,7 +41,6 @@ export type PostsRecord = {
 	sections?: RecordIdString[]
 	title?: string
 	views?: string
-	// created?: IsoDateString
 }
 
 export type SectionsRecord = {

@@ -7,10 +7,14 @@ export default async function Home() {
   let posts = await getPosts()
 
   return (
-    <main className="pt-10 flex flex-col items-center">
-      {posts.items.map( (post) => (
-        <ArticleCard key={post.id} {...post}/>
-      ))}
+    <main className="items-center w-9/12 m-auto">
+      <h1>Posts</h1>
+      <div className="pt-10 flex flex-col items-center">
+        {posts.items.map( (post) => (
+          <ArticleCard key={post.id} {...post}/>
+        ))}
+      </div>
+
     </main>
   );
 }
