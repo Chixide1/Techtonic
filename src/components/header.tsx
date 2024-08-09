@@ -1,5 +1,5 @@
 import { CrumpledPaperIcon } from '@radix-ui/react-icons'
-import { Socials } from './socials'
+import { GithubButton } from './github-button'
 import { Searchbar } from './searchbar'
 import { ThemeButton } from './theme-button'
 
@@ -13,9 +13,9 @@ export function Header() {
         <span className='text-gray-600 dark:text-muted-foreground pl-2 whitespace-nowrap font-semibold'>/ Blog</span>
       </div>
       <div className='flex'>
-        <ThemeButton/>
         <Searchbar />
-        <Socials/>
+        <GithubButton/>
+        <ThemeButton/>
       </div>
     </header>
   )

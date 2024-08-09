@@ -12,7 +12,7 @@ export function ThemeButton() {
   };
 
   return (
-    <button onClick={toggleTheme} className="mr-8">
+    <button onClick={toggleTheme} className="btn">
       {darkTheme ? <MoonIcon /> : <SunIcon />}
     </button>
   );

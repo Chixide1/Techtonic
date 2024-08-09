@@ -59,6 +59,11 @@
   }
 }
 
+@layer components {
+  .btn {
+    @apply p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600/30 transition-colors ease-linear delay-150;
+  }
+}
 
 svg {
   height: auto;
