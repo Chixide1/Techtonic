@@ -6,7 +6,7 @@ import type PocketBase from 'pocketbase'
 import type { RecordService } from 'pocketbase'
 
 export enum Collections {
-	Posts = "posts",
+	Articles = "articles",
 	Sections = "sections",
 	Users = "users",
 }
@@ -35,19 +35,20 @@ export type AuthSystemFields<T = never> = {
 
 // Record types for each collection
 
-export type PostsRecord = {
-	category?: string
-	img?: string
+export type ArticlesRecord<T = never> = {
+	category: string
+	img: string
 	sections?: RecordIdString[]
-	title?: string
-	views?: string
-}
+	title: string
+	views?: number
+} & BaseSystemFields<T>
 
 export type SectionsRecord = {
-	heading?: string
-	position?: number
-	post?: RecordIdString
-}
+	heading: string
+	position: number
+  content: string
+	Article: RecordIdString
+} & BaseSystemFields
 
 export type UsersRecord = {
 	avatar?: string
@@ -55,20 +56,20 @@ export type UsersRecord = {
 }
 
 // Response types include system fields and match responses from the PocketBase API
-export type PostsResponse<Texpand = unknown> = Required<PostsRecord> & BaseSystemFields<Texpand>
+export type ArticlesResponse<Texpand = unknown> = Required<ArticlesRecord> & BaseSystemFields<Texpand>
 export type SectionsResponse<Texpand = unknown> = Required<SectionsRecord> & BaseSystemFields<Texpand>
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> & AuthSystemFields<Texpand>
 
 // Types containing all Records and Responses, useful for creating typing helper functions
 
 export type CollectionRecords = {
-	posts: PostsRecord
+	articles: ArticlesRecord
 	sections: SectionsRecord
 	users: UsersRecord
 }
 
 export type CollectionResponses = {
-	posts: PostsResponse
+	articles: ArticlesResponse
 	sections: SectionsResponse
 	users: UsersResponse
 }
@@ -77,7 +78,7 @@ export type CollectionResponses = {
 // https://github.com/pocketbase/js-sdk#specify-typescript-definitions
 
 export type TypedPocketBase = PocketBase & {
-	collection(idOrName: 'posts'): RecordService<PostsResponse>
+	collection(idOrName: 'articles'): RecordService<ArticlesResponse>
 	collection(idOrName: 'sections'): RecordService<SectionsResponse>
 	collection(idOrName: 'users'): RecordService<UsersResponse>
 }

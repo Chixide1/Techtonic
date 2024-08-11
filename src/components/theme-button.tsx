@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export function ThemeButton() {
   let [darkTheme, setDarkTheme] = useState(false)
-  console.log(darkTheme)
+  // console.log(darkTheme)
 
   const toggleTheme = () => {
     document.documentElement.classList.toggle('dark');
