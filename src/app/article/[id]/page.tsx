@@ -19,9 +19,9 @@ export default async function Page(data: ArticleParams){
     <main className='px-10'>
       <ArticleHeader article={article}/>
       {sections?.map((section) => (
-        <section className="py-5">
-          <h1 key={section.id} className='text-lg font-semibold'>{section.heading}</h1>
-          <p key={section.id}>{section.content}</p>
+        <section key={section.id} className="py-5">
+          <h1 className='text-lg font-semibold'>{section.heading}</h1>
+          <p>{section.content}</p>
         </section>
       ))}
     </main>
