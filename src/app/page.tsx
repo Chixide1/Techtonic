@@ -1,6 +1,6 @@
 import { ArticleCard } from "@/components/article-card";
 import PocketBase from 'pocketbase';
-import { ArticlesResponse, TypedPocketBase } from "@/lib/pocketbase-types";
+import { TypedPocketBase } from "@/lib/pocketbase-types";
 
 
 export default async function Index() {

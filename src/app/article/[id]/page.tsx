@@ -1,4 +1,5 @@
-import { ArticlesRecord, BaseSystemFields, SectionsRecord, TypedPocketBase } from '@/lib/pocketbase-types'
+import { ArticleHeader } from '@/components/article-header'
+import { ArticlesRecord, SectionsRecord, TypedPocketBase } from '@/lib/pocketbase-types'
 import PocketBase from 'pocketbase'
 
 type ArticleParams = {
@@ -13,17 +14,17 @@ export default async function Page(data: ArticleParams){
   if(sections){
     sections.sort((a, b) => {return a.position - b.position})
   }
-  
-  
+
   return (
-    <div className='px-10'>
+    <main className='px-10'>
+      <ArticleHeader article={article}/>
       {sections?.map((section) => (
         <section className="py-5">
-          <h1 key={section.id} className='text-lg font-semibold'>{section.heading} {section.position}</h1>
+          <h1 key={section.id} className='text-lg font-semibold'>{section.heading}</h1>
           <p key={section.id}>{section.content}</p>
         </section>
       ))}
-    </div>
+    </main>
   )
 }
 
