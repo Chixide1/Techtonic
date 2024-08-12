@@ -3,7 +3,7 @@ import { getArticles } from "@/lib/pb";
 
 export default async function Index() {
   let articles = await getArticles()
-  console.log(articles)
+  // console.log(articles)
 
   return (
     <main className="items-center w-9/12 m-auto">

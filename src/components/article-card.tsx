@@ -1,7 +1,7 @@
 import { EyeOpenIcon, DashboardIcon, LayersIcon } from "@radix-ui/react-icons"
 import { ArticlesResponse } from "@/lib/pocketbase-types"
 import Link  from "next/link"
-import { getArticle, getImgSrc } from "@/lib/pb"
+import { getImgSrc } from "@/lib/pb"
 
 export function ArticleCard(article: ArticlesResponse) {
   const created: Date = new Date(article.created)
