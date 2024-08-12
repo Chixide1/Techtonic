@@ -1,5 +1,7 @@
+import { ArticleBody } from '@/components/article-body'
 import { ArticleHeader } from '@/components/article-header'
 import { getArticle } from '@/lib/pb'
+import { error } from 'console'
 
 type ArticleParams = {
   params: {id: string}
@@ -8,21 +10,18 @@ type ArticleParams = {
 
 export default async function Page(data: ArticleParams){
   const article = await getArticle(data.params.id)
-  const sections = article.expand?.sections
+  let sections = article.expand?.sections
 
-  if(sections){
-    sections.sort((a, b) => {return a.position - b.position})
+  if(!sections){
+    throw error("There are no sections!")
   }
+
+  sections.sort((a, b) => {return a.position - b.position})
 
   return (
     <main className='px-10'>
       <ArticleHeader article={article}/>
-      {sections?.map((section) => (
-        <section key={section.id} className="py-5">
-          <h1 className='text-lg font-semibold mb-2'>{section.heading}</h1>
-          <p>{section.content}</p>
-        </section>
-      ))}
+      <ArticleBody sections={sections}/>
     </main>
   )
 }

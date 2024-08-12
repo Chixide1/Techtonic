@@ -43,12 +43,12 @@ export type ArticlesRecord<Texpand = never> = {
 	views?: number
 } & BaseSystemFields<Texpand>
 
-export type SectionsRecord = {
+export type SectionsRecord <Texpand = never> = {
 	heading: string
 	position: number
   content: string
 	Article: RecordIdString
-} & BaseSystemFields
+} & BaseSystemFields<Texpand>
 
 export type UsersRecord = {
 	avatar?: string
