@@ -1,15 +1,17 @@
 import { EyeOpenIcon, DashboardIcon, LayersIcon } from "@radix-ui/react-icons"
 import { ArticlesResponse } from "@/lib/pocketbase-types"
 import Link  from "next/link"
+import { getArticle, getImgSrc } from "@/lib/pb"
 
 export function ArticleCard(article: ArticlesResponse) {
   const created: Date = new Date(article.created)
   const formattedArticleCreated = created.toLocaleDateString('en-GB', { day: 'numeric', year: 'numeric', month: 'short' })
+  const imgSrc = getImgSrc(article, article.img)
 
   return (
     <Link href={`article/${article.id}`} className="w-full border-2 border-gray-200 rounded-lg dark:bg-card dark:border dark:border-gray-500">
       <article className="flex p-5 gap-8">
-        <img className="max-w-56 rounded-lg" src={`http://127.0.0.1:8090/api/files/${article.collectionId}/${article.id}/${article.img}`} alt="Article image" />
+        <img className="max-w-56 rounded-lg" src={imgSrc} alt="Article image" />
         <div className="flex flex-col gap-4 flex-grow justify-between">
           <div className="flex justify-between w-full">
             <div className="text-sm font-semibold flex whitespace-nowrap">

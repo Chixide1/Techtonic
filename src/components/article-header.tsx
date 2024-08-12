@@ -1,7 +1,7 @@
-import { ArticlesRecord, TypedPocketBase } from '@/lib/pocketbase-types'
+import { getImgSrc } from '@/lib/pb'
+import { ArticlesRecord } from '@/lib/pocketbase-types'
 import { EyeOpenIcon, LayersIcon } from '@radix-ui/react-icons'
 import Image from 'next/image'
-import PocketBase from 'pocketbase'
 
 type ArticleHeaderProps = {
   article: ArticlesRecord<any>
@@ -29,10 +29,4 @@ export function ArticleHeader({article}: ArticleHeaderProps){
       </div>
     </header>
   )
-}
-
-function getImgSrc(record: ArticlesRecord<any>, imgName: string) {
-  const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
-  let url = pb.files.getUrl(record, imgName)
-  return url
 }

@@ -1,6 +1,5 @@
 import { ArticleHeader } from '@/components/article-header'
-import { ArticlesRecord, SectionsRecord, TypedPocketBase } from '@/lib/pocketbase-types'
-import PocketBase from 'pocketbase'
+import { getArticle } from '@/lib/pb'
 
 type ArticleParams = {
   params: {id: string}
@@ -26,10 +25,4 @@ export default async function Page(data: ArticleParams){
       ))}
     </main>
   )
-}
-
-async function getArticle(id: string){
-  const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
-  const article = await pb.collection('articles').getOne(id, { expand: 'sections'})
-  return article as ArticlesRecord<{sections: SectionsRecord[]}>
 }

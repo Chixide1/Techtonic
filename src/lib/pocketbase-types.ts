@@ -35,13 +35,13 @@ export type AuthSystemFields<T = never> = {
 
 // Record types for each collection
 
-export type ArticlesRecord<T = never> = {
+export type ArticlesRecord<Texpand = never> = {
 	category: string
 	img: string
 	sections?: RecordIdString[]
 	title: string
 	views?: number
-} & BaseSystemFields<T>
+} & BaseSystemFields<Texpand>
 
 export type SectionsRecord = {
 	heading: string
