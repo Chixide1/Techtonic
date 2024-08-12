@@ -3,7 +3,7 @@ import { ArticlesRecord, RecordIdString, SectionsRecord, TypedPocketBase } from 
 
 export async function getArticles(){
   const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
-  const articles = await pb.collection('articles').getList(0, 10);
+  const articles = await pb.collection('articles').getList(1, 10);
   return articles
 }
 
