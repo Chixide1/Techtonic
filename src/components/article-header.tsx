@@ -13,7 +13,7 @@ export function ArticleHeader({article}: ArticleHeaderProps){
   let imgSrc = getImgSrc(article, article.img)
 
   return (
-    <header className='flex flex-wrap md:flex-nowrap min-w-72 gap-12 my-12 max-w-full'>
+    <header className='flex flex-wrap md:flex-nowrap min-w-72 gap-12 mt-12 md:max-w-full'>
       <Image src={imgSrc} alt="An abstract picture" width={1000} height={1000} className='rounded-2xl md:max-w-[50%]'/>
       <div className='flex flex-col justify-between gap-4'>
         <span className='font-semibold text-sm'>
@@ -21,7 +21,7 @@ export function ArticleHeader({article}: ArticleHeaderProps){
           {article.category}
         </span>
         <h1 className='font-semibold text-3xl text-balance'>{article.title}</h1>
-        <p className='text-gray-600 dark:text-gray-400'>
+        <p className='text-neutral-600 dark:text-neutral-400'>
           <span className='text-sm'>{formattedArticleCreated}</span>
           <span className='px-4 text-gray-300'>|</span>
           <span className='text-sm'><EyeOpenIcon className="max-w-4 inline-block my-auto mr-1 "/>{article.views}</span>

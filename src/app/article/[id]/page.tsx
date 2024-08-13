@@ -1,10 +1,11 @@
 import { ArticleBody } from '@/components/article-body'
 import { ArticleHeader } from '@/components/article-header'
 import { getArticle } from '@/lib/pb'
+import { RecordIdString } from '@/lib/pocketbase-types'
 import { error } from 'console'
 
 type ArticleParams = {
-  params: {id: string}
+  params: {id: RecordIdString}
   searchParams: {}
 }
 
@@ -13,10 +14,11 @@ export default async function Page(data: ArticleParams){
   let sections = article.expand?.sections
 
   if(!sections){
-    throw error("There are no sections!")
+    return error("There are no sections to render!")
   }
-
-  sections.sort((a, b) => {return a.position - b.position})
+  else{
+    sections.sort((a, b) => {return a.position - b.position})
+  }
 
   return (
     <main className='px-10'>

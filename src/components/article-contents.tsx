@@ -7,12 +7,12 @@ type ArticleContentsProps = {
 
 export function ArticleContents({sections}: ArticleContentsProps){
   return (
-    <aside className="w-auto">
-      <div className="sticky top-20 border-gray-200 dark:border-gray-600 border-2 rounded-lg p-4">
-      <h1 className="text-lg font-semibold">Contents</h1>
+    <aside className="w-auto pt-10 hidden lg:block">
+      <div className="sticky top-12 rounded-lg p-4">
+      <h1 className="text-sm font-semibold pb-2">On this page</h1>
       {sections.map((section) => (
         <Link href={`#${section.id}`} key={section.id} className="">
-          <h5 className='text-sm text-gray-600 dark:text-gray-400 py-2'>{section.heading}</h5>
+          <h5 className='text-sm text-neutral-600 hover:text-inherit dark:text-neutral-400 py-2'>{section.heading}</h5>
         </Link>
       ))}
       </div>
