@@ -4,7 +4,7 @@ import Link  from "next/link"
 import { getImgSrc } from "@/lib/pb"
 import Image from "next/image"
 
-export function ArticleCard(article: ArticlesResponse) {
+export function Card(article: ArticlesResponse) {
   const created: Date = new Date(article.created)
   const formattedArticleCreated = created.toLocaleDateString('en-GB', { day: 'numeric', year: 'numeric', month: 'short' })
   const imgSrc = getImgSrc(article, article.img)

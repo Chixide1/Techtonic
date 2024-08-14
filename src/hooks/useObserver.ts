@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef} from "react";
 
 export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<string>>){
   
@@ -14,7 +14,7 @@ export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<str
 
   useEffect(() => {
     const observer = new IntersectionObserver(callback, {
-      rootMargin: "-40% 0% -40% 0px", threshold: 0.2 });
+      rootMargin: "-40% 0% -40% 0%", threshold: 0.2 });
 
     refElements.current.forEach((element, i) => {
       if (element) {
