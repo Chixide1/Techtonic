@@ -67,6 +67,16 @@
   }
 }
 
+body::-webkit-scrollbar {
+  width: 14px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary));
+  border-radius: 20px;
+  border: 4px solid hsl(var(--background));
+}
+
 svg {
   height: auto;
   width: 100%;

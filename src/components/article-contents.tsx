@@ -16,7 +16,7 @@ export function ArticleContents({sections, activeId}: ArticleContentsProps){
       {sections.map((section) => (
         <Link href={`#${section.id}`} key={`link-${section.id}`}>
           <h5 className={'text-xs hover:text-inherit text-neutral-600 dark:text-neutral-400 py-2'
-          + ' ' + (activeId === section.id ? "!text-sky-600": "")}>{section.heading}</h5>
+          + ' ' + (activeId === section.id ? "!text-primary": "")}>{section.heading}</h5>
         </Link>
       ))}
       </div>

@@ -2,16 +2,16 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, run the development server & pocketbase:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Linux
+```Bash
+npm run dev && ./pocketbase/pb_linux.exe serve
+```
+
+Windows
+```PowerShell
+npm run dev; ./pocketbase/pb_windows.exe serve
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

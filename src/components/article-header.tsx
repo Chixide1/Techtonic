@@ -23,7 +23,7 @@ export function ArticleHeader({article}: ArticleHeaderProps){
         <h1 className='font-semibold text-3xl text-balance'>{article.title}</h1>
         <p className='text-neutral-600 dark:text-neutral-400'>
           <span className='text-sm'>{formattedArticleCreated}</span>
-          <span className='px-4 text-gray-300'>|</span>
+          <span className='px-4 text-sm text-neutral-300'>|</span>
           <span className='text-sm'><EyeOpenIcon className="max-w-4 inline-block my-auto mr-1 "/>{article.views}</span>
         </p>
       </div>
