@@ -1,19 +1,23 @@
 'use client'
 import { SunIcon, MoonIcon } from "@radix-ui/react-icons"
-import { useState } from "react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function ThemeButton() {
-  let [darkTheme, setDarkTheme] = useState(false)
-  // console.log(darkTheme)
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
 
-  const toggleTheme = () => {
-    document.documentElement.classList.toggle('dark');
-    setDarkTheme(darkTheme = !darkTheme)
-  };
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return null
+  }
 
   return (
-    <button onClick={toggleTheme} className="btn">
-      {darkTheme ? <MoonIcon /> : <SunIcon />}
+    <button onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')} className="btn">
+      {theme == 'light' ? <SunIcon/> : <MoonIcon/> }
     </button>
   );
 }
