@@ -3,6 +3,7 @@ import { GithubButton } from './github-button'
 import { Searchbar } from './searchbar'
 import { ThemeButton } from './theme-button'
 import Link from 'next/link'
+import { SearchButton } from './search-button'
 
 
 export function Header() {
@@ -13,8 +14,8 @@ export function Header() {
         <h5 className='font-semibold tracking-tight hidden sm:inline'>Example Blog App</h5>
         <span className='text-neutral-600 dark:text-neutral-400 pl-2 whitespace-nowrap font-semibold hidden md:inline'>/ Blog</span>
       </Link>
-      <Searchbar />
-      <div className='flex flex-shrink-0'>
+      <div className='flex flex-shrink-0 gap-2'>
+        <SearchButton/>
         <GithubButton/>
         <ThemeButton/>
       </div>

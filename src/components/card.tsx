@@ -10,7 +10,7 @@ export function Card(article: ArticlesResponse) {
   const imgSrc = getImgSrc(article, article.img)
 
   return (
-    <Link href={`article/${article.id}`} className="w-full max-w-md md:max-w-none border-2 border-gray-200 rounded-lg dark:bg-card dark:border dark:border-gray-500">
+    <Link href={`article/${article.id}`} className="w-full max-w-md md:max-w-none border border-border rounded-lg dark:bg-card group">
       <article className="flex flex-col flex-1 md:flex-row p-5 gap-8 max-w-full">
         <Image className="w-full md:max-w-56 rounded-lg" src={imgSrc} alt="Article image" width={200} height={1} />
         <div className="flex flex-col gap-4 flex-grow justify-between w-auto">
@@ -21,9 +21,9 @@ export function Card(article: ArticlesResponse) {
             </div>
             <span className="ml-auto text-neutral-600 text-sm max-w-[25ch] whitespace-nowrap overflow-hidden text-ellipsis dark:text-neutral-400">{formattedArticleCreated}</span>
           </div>
-          <h5 className="text-lg font-semibold md:max-w-xl md:text-balance">{article.title}</h5>
+          <h5 className="text-lg font-semibold md:max-w-lg md:text-balance">{article.title}</h5>
           <div className="flex w-full justify-between">
-            <span className="text-sm">Read More &rarr;</span>
+            <span className="text-sm group-hover:text-primary group-hover:animate-bounce">Read More <span className="">&rarr;</span></span>
             <span className="flex gap-2 text-neutral-600 text-sm dark:text-neutral-400"><EyeOpenIcon strokeWidth={5} className="max-w-4" />{article.views.toLocaleString()}</span>
           </div>
         </div>

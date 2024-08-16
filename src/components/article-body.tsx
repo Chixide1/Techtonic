@@ -14,15 +14,16 @@ export function ArticleBody({sections}: ArticleBodyProps ){
   let refElements = useObserver(setActiveId)
 
   return (
-    <div className="flex flex-col-reverse gap-8 lg:flex-row">
+    <div className="flex flex-col-reverse gap-8 lg:flex-row mt-28">
       <article className="lg:max-w-[75%]">
         {sections.map((section, i) => (
-          <section key={section.id} id={section.id} ref={(el) => {refElements.current[i] = el}} className="pt-14">
+          <section key={section.id} id={section.id} ref={(el) => {refElements.current[i] = el}}
+          className="px-6 py-8 border border-border rounded-lg my-4 bg-card scroll-mt-14">
             <h1 className='text-xl font-semibold mb-2'>{section.heading}</h1>
-            <p>{section.content}</p>
+            <p className="text-muted-foreground">{section.content}</p>
           </section>
         ))}
-        <Footer className="mt-16"/>
+        <Footer className="mt-14"/>
       </article>
       <ArticleContents sections={sections} activeId={activeId} />
     </div>

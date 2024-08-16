@@ -67,14 +67,25 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "content-show": {
+          from: { opacity: '0', transform: 'translate(70%, -140%) scale(0)' },
+          to: { opacity: '1', transform: 'translate(-50%, -50%) scale(1)'},
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "content-show": "content-show 500ms ease",
+        "content-disappear": "content-show 500ms ease reverse"
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
+  variants: {
+    extend: {
+      animation: ['group-hover'],
+    },
+  },
 } satisfies Config
 
 export default config

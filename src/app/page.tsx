@@ -14,7 +14,7 @@ export default async function Index() {
           <Card key={article.id} {...article}/>
         ))}
       </div>
-        <Footer className="mt-20"/>
+        <Footer className="mt-14"/>
     </main>
   );
 }
