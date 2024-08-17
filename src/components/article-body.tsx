@@ -18,9 +18,9 @@ export function ArticleBody({sections}: ArticleBodyProps ){
       <article className="lg:max-w-[75%]">
         {sections.map((section, i) => (
           <section key={section.id} id={section.id} ref={(el) => {refElements.current[i] = el}}
-          className="px-6 py-8 border border-border rounded-lg my-4 bg-card scroll-mt-14">
+          className="px-6 py-8 border border-border rounded-lg my-4 bg-card scroll-mt-14 shadow-sm">
             <h1 className='text-xl font-semibold mb-2'>{section.heading}</h1>
-            <p className="text-muted-foreground">{section.content}</p>
+            <p className="text-muted-foreground text-sm">{section.content}</p>
           </section>
         ))}
         <Footer className="mt-14"/>

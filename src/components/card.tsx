@@ -10,7 +10,7 @@ export function Card(article: ArticlesResponse) {
   const imgSrc = getImgSrc(article, article.img)
 
   return (
-    <Link href={`article/${article.id}`} className="w-full max-w-md md:max-w-none border border-border rounded-lg dark:bg-card group">
+    <Link href={`article/${article.id}`} className="w-full max-w-md md:max-w-none border border-border rounded-lg dark:bg-card group shadow-sm">
       <article className="flex flex-col flex-1 md:flex-row p-5 gap-8 max-w-full">
         <Image className="w-full md:max-w-56 rounded-lg" src={imgSrc} alt="Article image" width={200} height={1} />
         <div className="flex flex-col gap-4 flex-grow justify-between w-auto">

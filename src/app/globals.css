@@ -63,7 +63,7 @@
 
 @layer components {
   .btn {
-    @apply p-2 rounded-md hover:bg-gray-600/40 
+    @apply p-2 rounded-md hover:bg-gray-600/40
       transition-colors ease-linear delay-150;
   }
 }
