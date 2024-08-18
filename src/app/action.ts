@@ -1,9 +1,9 @@
 import PocketBase from 'pocketbase';
 import { ArticlesRecord, RecordIdString, SectionsRecord, TypedPocketBase } from "@/lib/pocketbase-types";
 
-export async function getArticles(){
+export async function getArticles(page: number = 1){
   const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
-  const articles = await pb.collection('articles').getList(1, 10);
+  const articles = await pb.collection('articles').getList(page, 10);
   return articles
 }
 

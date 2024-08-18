@@ -1,40 +1,44 @@
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { record, z } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Input } from "./ui/input";
 import { filterArticles, getImgSrc } from "@/app/action";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { ArticlesRecord } from "@/lib/pocketbase-types";
 import Link from "next/link";
 
 const formSchema = z.object({
-  search: z.string().min(3).max(30),
+  query: z.string().min(3).max(30),
 })
 
-export default function SearchForm() {
+type SearchFormProps = {
+  setOpen: Dispatch<SetStateAction<boolean>>
+}
+
+export default function SearchForm({setOpen}: SearchFormProps) {
   const [searched, setSearched] = useState(false)
   const [results, setResults] = useState<ArticlesRecord[]>()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      search: "",
+      query: "",
     },
   })
 
   async function searchArticles(values: z.infer<typeof formSchema>) {
 
-    if (values.search) {
+    if (values.query) {
       setSearched(true)
-      let queryReturn = await filterArticles(values.search)
+      let filteredArticles = await filterArticles(values.query)
 
-      queryReturn.items.map(record => {
+      filteredArticles.items.map(record => {
         record.img = getImgSrc(record, record.img)
       })
 
-      setResults(queryReturn.items)
+      setResults(filteredArticles.items)
     }
     else (
       setSearched(false)
@@ -47,7 +51,7 @@ export default function SearchForm() {
         <form onSubmit={form.handleSubmit(searchArticles)} className='border-b border-border py-1 px-2 relative'>
           <FormField
             control={form.control}
-            name="search"
+            name="query"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="absolute inset-y-0 left-0 flex items-center pl-3">
@@ -67,7 +71,7 @@ export default function SearchForm() {
         {searched && <h6 className="text-xs text-muted-foreground pb-2 pl-2">Articles</h6>}
         {searched && results?.map((article) => (
           <li>
-            <Link key={`q-${article.id}`} href={`/article/${article.id}`}
+            <Link key={`q-${article.id}`} href={`/article/${article.id}`} onClick={() => setOpen(false)}
               className="p-2 flex max-w-full gap-2 rounded-lg hover:bg-accent">
               <img src={article.img} alt="Article Image" className="w-1/5 rounded-lg"/>
               <span className="text-xs">{article.title}</span>
