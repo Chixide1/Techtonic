@@ -18,6 +18,7 @@ export type CardPaginationProps = {
 }
 
 export function CardPagination({ pageInfo }: CardPaginationProps) {
+  
 
   return (
     <Pagination className="mt-4">
@@ -28,7 +29,7 @@ export function CardPagination({ pageInfo }: CardPaginationProps) {
             </PaginationItem>
           }
         {Array(pageInfo.totalPages).fill('_').map((_, i) => (
-          <PaginationItem>
+          <PaginationItem key={i}>
             <PaginationLink href={'/?page=' + (i + 1)}>{i + 1}</PaginationLink>
           </PaginationItem>
         ))}

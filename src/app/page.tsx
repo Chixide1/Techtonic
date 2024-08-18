@@ -3,7 +3,6 @@ import { Footer } from "@/components/footer";
 import { getArticles } from "@/app/action";
 import { notFound } from "next/navigation";
 import { CardPagination, CardPaginationProps } from "@/components/card-pagination";
-import { ArticlesResponse } from "@/lib/pocketbase-types";
 
 type PageParams = {
   params: {}
@@ -14,7 +13,7 @@ type PageParams = {
 
 export default async function Index(data: PageParams) {
   let articles = await getArticles(data.searchParams.page)
-  console.log(articles)
+  // console.log(articles)
 
   if(!articles.items.length){
     return notFound()

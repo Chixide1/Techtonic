@@ -2,12 +2,13 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "./ui/form";
 import { Input } from "./ui/input";
 import { filterArticles, getImgSrc } from "@/app/action";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { ArticlesRecord } from "@/lib/pocketbase-types";
 import Link from "next/link";
+import { debounce } from "lodash"
 
 const formSchema = z.object({
   query: z.string().min(3).max(30),
@@ -45,10 +46,12 @@ export default function SearchForm({setOpen}: SearchFormProps) {
     )
   }
 
+
+
   return (
     <section className="h-full w-full">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(searchArticles)} className='border-b border-border py-1 px-2 relative'>
+        <form onSubmit={e => e.preventDefault()} onKeyUp={debounce(form.handleSubmit(searchArticles),1500)} className='border-b border-border py-1 px-2 relative'>
           <FormField
             control={form.control}
             name="query"
@@ -59,9 +62,8 @@ export default function SearchForm({setOpen}: SearchFormProps) {
                 </FormLabel>
                 <FormControl>
                   <Input {...field} className="border-0 bg-popover text-popover-foreground placeholder:text-xs placeholder:text-muted-foreground block w-full py-2 pl-7 focus:outline-none sm:text-sm"
-                    placeholder="Search Articles" type="text" name="search" />
+                    placeholder="Search articles with at least 3 letters..." type="text" name="search" />
                 </FormControl>
-                <FormMessage />
               </FormItem>
             )}
           />
