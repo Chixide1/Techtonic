@@ -18,3 +18,11 @@ export function getImgSrc(record: ArticlesRecord<any>, imgName: string) {
   let url = pb.files.getUrl(record, imgName)
   return url
 }
+
+export async function filterArticles(query: string){
+  const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
+  const results = pb.collection('articles').getList(1, 10, {
+    filter: `title ~ "${query}"`
+  })
+  return results
+}

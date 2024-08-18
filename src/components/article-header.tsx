@@ -1,4 +1,4 @@
-import { getImgSrc } from '@/lib/pb'
+import { getImgSrc } from '@/app/action'
 import { ArticlesRecord } from '@/lib/pocketbase-types'
 import { EyeOpenIcon, LayersIcon } from '@radix-ui/react-icons'
 import Image from 'next/image'

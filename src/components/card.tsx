@@ -1,7 +1,7 @@
 import { EyeOpenIcon, DashboardIcon, LayersIcon } from "@radix-ui/react-icons"
 import { ArticlesResponse } from "@/lib/pocketbase-types"
 import Link  from "next/link"
-import { getImgSrc } from "@/lib/pb"
+import { getImgSrc } from "@/app/action"
 import Image from "next/image"
 
 export function Card(article: ArticlesResponse) {

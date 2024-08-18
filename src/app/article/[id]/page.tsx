@@ -1,6 +1,6 @@
 import { ArticleBody } from '@/components/article-body'
 import { ArticleHeader } from '@/components/article-header'
-import { getArticle } from '@/lib/pb'
+import { filterArticles, getArticle } from '@/app/action'
 import { RecordIdString } from '@/lib/pocketbase-types'
 import { error } from 'console'
 

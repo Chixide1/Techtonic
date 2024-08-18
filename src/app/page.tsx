@@ -1,6 +1,6 @@
 import { Card } from "@/components/card";
 import { Footer } from "@/components/footer";
-import { getArticles } from "@/lib/pb";
+import { getArticles } from "@/app/action";
 
 export default async function Index() {
   let articles = await getArticles()
