@@ -7,10 +7,10 @@ type ArticleHeaderProps = {
   article: ArticlesRecord<any>
 }
 
-export function ArticleHeader({article}: ArticleHeaderProps){
+export async function ArticleHeader({article}: ArticleHeaderProps){
   const created: Date = new Date(article.created)
   const formattedArticleCreated = created.toLocaleDateString('en-GB', { day: 'numeric', year: 'numeric', month: 'short' })
-  let imgSrc = getImgSrc(article, article.img)
+  let imgSrc = await getImgSrc(article, article.img)
 
   return (
     <header className='flex flex-wrap md:flex-nowrap min-w-72 gap-12 mt-12 md:max-w-full'>
