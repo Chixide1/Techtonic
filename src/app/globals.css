@@ -90,8 +90,8 @@ svg {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 85vw;
-  max-width: 400px;
-  max-height: 85vh;
+  max-width: 500px;
+  max-height: 500px;
 }
 
 .search-form::-webkit-scrollbar {

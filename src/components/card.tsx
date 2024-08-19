@@ -8,10 +8,10 @@ type CardProps = {
   article: ArticlesRecord
 }
 
-export function Card({article}: CardProps) {
+export async function Card({article}: CardProps) {
   const created: Date = new Date(article.created)
   const formattedArticleCreated = created.toLocaleDateString('en-GB', { day: 'numeric', year: 'numeric', month: 'short' })
-  const imgSrc = getImgSrc(article, article.img)
+  const imgSrc = await getImgSrc(article, article.img)
 
   return (
     <Link href={`article/${article.id}`} className="w-full max-w-md md:max-w-none border border-border rounded-lg dark:bg-card group shadow-sm">

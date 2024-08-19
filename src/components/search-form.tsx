@@ -35,8 +35,8 @@ export default function SearchForm({setOpen}: SearchFormProps) {
       setSearched(true)
       let filteredArticles = await filterArticles(values.query)
 
-      filteredArticles.items.map(record => {
-        record.img = getImgSrc(record, record.img)
+      filteredArticles.items.map(async record => {
+        record.img = await getImgSrc(record, record.img)
       })
 
       setResults(filteredArticles.items)

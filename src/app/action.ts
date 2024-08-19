@@ -1,3 +1,4 @@
+'use server'
 import PocketBase from 'pocketbase';
 import { ArticlesRecord, RecordIdString, SectionsRecord, TypedPocketBase } from "@/lib/pocketbase-types";
 
@@ -13,7 +14,7 @@ export async function getArticle(id: RecordIdString){
   return article as ArticlesRecord<{sections: SectionsRecord[]}>
 }
 
-export function getImgSrc(record: ArticlesRecord<any>, imgName: string) {
+export async function getImgSrc(record: ArticlesRecord<any>, imgName: string) {
   const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
   let url = pb.files.getUrl(record, imgName)
   return url
