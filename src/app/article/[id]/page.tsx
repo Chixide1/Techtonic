@@ -11,12 +11,8 @@ type ArticleParams = {
 
 export default async function Page(data: ArticleParams){
   const article = await getArticle(data.params.id)
-  let results = await incrView(data.params.id)
-
-  if(article.views){
-    article.views += 1
-  } 
-  // console.log(results)
+  const updatedArticle = await incrView(article.id)
+  console.log(updatedArticle)
 
   let sections = article.expand?.sections
 
@@ -29,7 +25,7 @@ export default async function Page(data: ArticleParams){
 
   return (
     <main className='px-10'>
-      <ArticleHeader article={article}/>
+      <ArticleHeader article={updatedArticle}/>
       <ArticleBody sections={sections}/>
     </main>
   )

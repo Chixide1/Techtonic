@@ -13,7 +13,6 @@ type PageParams = {
 
 export default async function Index(data: PageParams) {
   let articles = await getArticles(data.searchParams.page)
-  // console.log(articles)
 
   if(!articles.items.length){
     return notFound()
