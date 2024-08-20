@@ -1,4 +1,4 @@
-'use server'
+// 'use server'
 import PocketBase from 'pocketbase';
 import { ArticlesRecord, RecordIdString, SectionsRecord, TypedPocketBase } from "@/lib/pocketbase-types";
 
@@ -30,19 +30,7 @@ export async function filterArticles(query: string){
 
 export async function incrView(id: RecordIdString){
   const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase;
-  const user = process.env.DB_EMAIL
-  const pass = process.env.DB_PASS
-
-  if(!user || !pass){
-    return
-  }
-
-  const authData = pb.collection('users').authWithPassword(user, pass);
-
-  const record = await pb.collection("articles").getOne(id)
-
-  record.views += 1
-
-  const results = await pb.collection('articles').update(record.id, record)
-  return results
+ 
+  const updatedRecord = await pb.send(`/addView/${id}`, {method: 'GET'})
+  return updatedRecord
 }
