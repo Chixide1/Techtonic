@@ -9,6 +9,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { ArticlesRecord } from "@/lib/pocketbase-types";
 import Link from "next/link";
 import { debounce } from "lodash"
+import Image from "next/image";
 
 const formSchema = z.object({
   query: z.string().min(3).max(30),
@@ -72,10 +73,10 @@ export default function SearchForm({setOpen}: SearchFormProps) {
       <ul className="search-form py-3 px-2 overflow-y-auto h-[75vh] max-h-full">
         {searched && <h6 className="text-xs text-muted-foreground pb-2 pl-2">Articles</h6>}
         {searched && results?.map((article) => (
-          <li>
-            <Link key={`q-${article.id}`} href={`/article/${article.id}`} onClick={() => setOpen(false)}
+          <li key={`q-${article.id}`}>
+            <Link href={`/article/${article.id}`} onClick={() => setOpen(false)}
               className="p-2 flex max-w-full gap-2 rounded-lg hover:bg-accent">
-              <img src={article.img} alt="Article Image" className="w-1/5 rounded-lg"/>
+              <Image src={article.img} alt="Article Image" className="w-1/5 rounded-lg"/>
               <span className="text-xs">{article.title}</span>
             </Link>
           </li>

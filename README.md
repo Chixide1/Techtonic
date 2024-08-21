@@ -6,7 +6,7 @@ First, run the development server & pocketbase:
 
 Linux
 ```Bash
-npm run dev && ./pocketbase/pb_linux.exe serve
+npm run dev && ./pocketbase/pb_linux serve
 ```
 
 Windows
