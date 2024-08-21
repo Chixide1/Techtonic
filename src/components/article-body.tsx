@@ -12,7 +12,7 @@ type ArticleBodyProps = {
 export function ArticleBody({sections}: ArticleBodyProps ){
   const [activeId, setActiveId] = useState('')
   let refElements = useObserver(setActiveId)
-
+  
   return (
     <div className="flex flex-col-reverse gap-8 lg:flex-row mt-28">
       <article className="lg:max-w-[75%]">

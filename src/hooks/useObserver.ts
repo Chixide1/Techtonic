@@ -14,9 +14,9 @@ export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<str
 
   useEffect(() => {
     const observer = new IntersectionObserver(callback, {
-      rootMargin: "-40% 0% -40% 0%", threshold: 0.2 });
+      rootMargin: "-40% 0% -40% 0%", threshold: 0.1 });
 
-    refElements.current.forEach((element, i) => {
+    refElements.current.forEach((element) => {
       if (element) {
         observer.observe(element);
       }

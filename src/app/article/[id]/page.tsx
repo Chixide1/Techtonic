@@ -12,6 +12,7 @@ type ArticleParams = {
 export default async function Page(data: ArticleParams){
   const article = await getArticle(data.params.id)
   const updatedArticle = await incrView(article.id)
+  // console.log(article)
 
   let sections = article.expand?.sections
 
