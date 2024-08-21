@@ -1,5 +1,5 @@
 'use client'
-import { SunIcon, MoonIcon } from "@radix-ui/react-icons"
+import { SunIcon, MoonIcon, UpdateIcon } from "@radix-ui/react-icons"
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -7,12 +7,14 @@ export function ThemeButton() {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
+  // throw Promise.resolve('test')
+
   useEffect(() => {
     setMounted(true)
   }, [])
 
   if (!mounted) {
-    return null
+    return <UpdateIcon className="max-w-4 animate-spin"/>
   }
 
   return (

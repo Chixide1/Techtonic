@@ -1,3 +1,4 @@
+'use client'
 import * as Dialog from '@radix-ui/react-dialog';
 import SearchForm from './search-form';
 import { useState } from 'react';

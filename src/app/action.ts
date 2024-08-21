@@ -1,4 +1,4 @@
-// 'use server'
+'use server'
 import PocketBase from 'pocketbase';
 import { ArticlesRecord, RecordIdString, SectionsRecord, TypedPocketBase } from "@/lib/pocketbase-types";
 

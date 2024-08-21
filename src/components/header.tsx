@@ -1,9 +1,8 @@
-import { CrumpledPaperIcon } from '@radix-ui/react-icons'
+import { CrumpledPaperIcon, UpdateIcon } from '@radix-ui/react-icons'
 import { GithubButton } from './github-button'
 import { ThemeButton } from './theme-button'
 import Link from 'next/link'
 import { SearchButton } from './search-button'
-
 
 export function Header() {
   return (
