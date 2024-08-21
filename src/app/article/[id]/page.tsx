@@ -17,7 +17,12 @@ export default async function Page(data: ArticleParams){
   let sections = article.expand?.sections
 
   if(!sections){
-    return error("There are no sections to render!")
+    console.error("There are no sections to render!")
+    return (
+      <main className='px-10'>
+        <ArticleHeader article={updatedArticle}/>
+      </main>
+    )
   }
   else{
     sections.sort((a, b) => {return a.position - b.position})

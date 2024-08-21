@@ -14,7 +14,7 @@ export async function ArticleHeader({article}: ArticleHeaderProps){
 
   return (
     <header className='flex flex-wrap md:flex-nowrap min-w-72 gap-12 mt-12 md:max-w-full'>
-      <Image src={imgSrc} alt="An abstract picture" width={1000} height={1000} className='rounded-2xl md:max-w-[50%]'/>
+      <Image src={imgSrc} alt="An abstract picture" width={1000} height={1000} className='rounded-2xl md:max-w-[50%] max-h-[60vh]'/>
       <div className='flex flex-col justify-between gap-4'>
         <span className='font-semibold text-sm'>
           <LayersIcon className="bg-violet-300 mr-1 text-violet-800 p-0.5 rounded-sm dark:bg-violet-800 dark:text-violet-100 max-w-4 inline-block"/>
