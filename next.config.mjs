@@ -3,15 +3,15 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '127.0.0.1',
-        port: '8090',
+        protocol: 'https',
+        hostname: '**.chikdoestech.xyz',
+        port: '',
         pathname: '/**',
       },
       {
-        protocol: 'https',
-        hostname: 'pb-blog.chikdoestech.xyz',
-        port: '443',
+        protocol: 'http',
+        hostname: '127.0.0.1',
+        port: '8090',
         pathname: '/**',
       },
     ],
