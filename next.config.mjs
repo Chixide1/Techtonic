@@ -8,6 +8,12 @@ const nextConfig = {
         port: '8090',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'chikdoestech.xyz',
+        port: '443',
+        pathname: '/**',
+      },
     ],
   },
 };
