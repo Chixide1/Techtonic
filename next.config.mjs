@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'chikdoestech.xyz',
+        hostname: 'pb-blog.chikdoestech.xyz',
         port: '443',
         pathname: '/**',
       },
