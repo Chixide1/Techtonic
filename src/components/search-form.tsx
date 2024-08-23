@@ -69,8 +69,7 @@ export default function SearchForm({setOpen}: SearchFormProps) {
           <li key={`q-${article.id}`}>
             <Link href={`/article/${article.id}`} onClick={() => setOpen(false)}
             className="p-2 flex max-w-full gap-2 rounded-lg hover:bg-accent">
-              <Image src={article.img} alt="Article Image" className="w-1/5 rounded-lg max-w-24 max-h-14" width={1000} height={1000}
-              placeholder='blur' blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOcw/C+HgAE1wIMDblCWgAAAABJRU5ErkJggg=="/>
+              <Image src={article.img} alt="Article Image" className="w-1/5 rounded-lg max-w-24 max-h-14" width={1000} height={1000}/>
               <h5 className="text-sm text-pretty flex items-center">{article.title}</h5>
             </Link>
           </li>
