@@ -1,11 +1,11 @@
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { MagnifyingGlassIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "./ui/form";
 import { Input } from "./ui/input";
 import { filterArticles, getImgSrc } from "@/app/action";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, Suspense, useState } from "react";
 import { ArticlesRecord } from "@/lib/pocketbase-types";
 import Link from "next/link";
 import { debounce } from "lodash"
@@ -41,6 +41,7 @@ export default function SearchForm({setOpen}: SearchFormProps) {
       })
 
       setResults(filteredArticles.items)
+      console.log(filteredArticles.items)
     }
     else (
       setSearched(false)
@@ -75,8 +76,8 @@ export default function SearchForm({setOpen}: SearchFormProps) {
         {searched && results?.map((article) => (
           <li key={`q-${article.id}`}>
             <Link href={`/article/${article.id}`} onClick={() => setOpen(false)}
-              className="p-2 flex max-w-full gap-2 rounded-lg hover:bg-accent">
-              <Image src={article.img} alt="Article Image" className="w-1/5 rounded-lg"/>
+            className="p-2 flex max-w-full gap-2 rounded-lg hover:bg-accent">
+              <Image src={article.img} alt="Article Image" className="w-1/5 rounded-lg" width={1000} height={1000} placeholder='blur'/>
               <span className="text-xs">{article.title}</span>
             </Link>
           </li>

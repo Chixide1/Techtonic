@@ -17,13 +17,13 @@ export async function getArticle(id: RecordIdString){
 
 export async function getImgSrc(record: ArticlesRecord<any>, imgName: string) {
   const pb = new PocketBase(pb_url) as TypedPocketBase;
-  let url = pb.files.getUrl(record, imgName)
+  let url = await pb.files.getUrl(record, imgName)
   return url
 }
 
 export async function filterArticles(query: string){
   const pb = new PocketBase(pb_url) as TypedPocketBase;
-  const results = pb.collection('articles').getList(1, 10, {
+  const results = await pb.collection('articles').getList(1, 10, {
     filter: `title ~ "${query}"`
   })
   return results

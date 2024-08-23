@@ -7,8 +7,6 @@ export function ThemeButton() {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  // throw Promise.resolve('test')
-
   useEffect(() => {
     setMounted(true)
   }, [])

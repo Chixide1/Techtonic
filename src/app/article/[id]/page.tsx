@@ -29,7 +29,7 @@ export default async function Page(data: ArticleParams){
   }
 
   return (
-    <main className='px-10'>
+    <main className='px-6 md:px-10'>
       <ArticleHeader article={updatedArticle}/>
       <ArticleBody sections={sections}/>
     </main>

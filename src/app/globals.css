@@ -66,6 +66,10 @@
     @apply p-2 rounded-md hover:bg-gray-600/20
       transition-colors ease-linear delay-150;
   }
+
+  .btn svg {
+    @apply w-[18px]
+  }
 }
 
 body::-webkit-scrollbar {
