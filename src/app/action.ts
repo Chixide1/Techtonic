@@ -26,6 +26,10 @@ export async function filterArticles(query: string){
   const results = await pb.collection('articles').getList(1, 10, {
     filter: `title ~ "${query}"`
   })
+
+  results.items.map(result => {
+    result.img = pb.files.getUrl(result, result.img)
+  })
   return results
 }
 

@@ -35,23 +35,15 @@ export default function SearchForm({setOpen}: SearchFormProps) {
     if (values.query) {
       setSearched(true)
       let filteredArticles = await filterArticles(values.query)
-
-      filteredArticles.items.map(async record => {
-        record.img = await getImgSrc(record, record.img)
-      })
-
       setResults(filteredArticles.items)
-      console.log(filteredArticles.items)
     }
     else (
       setSearched(false)
     )
   }
 
-
-
   return (
-    <section className="h-full w-full">
+    <section className="h-full w-full" id="searchform">
       <Form {...form}>
         <form onSubmit={e => e.preventDefault()} onKeyUp={debounce(form.handleSubmit(searchArticles),1500)} className='border-b border-border py-1 px-2 relative'>
           <FormField
@@ -77,7 +69,8 @@ export default function SearchForm({setOpen}: SearchFormProps) {
           <li key={`q-${article.id}`}>
             <Link href={`/article/${article.id}`} onClick={() => setOpen(false)}
             className="p-2 flex max-w-full gap-2 rounded-lg hover:bg-accent">
-              <Image src={article.img} alt="Article Image" className="w-1/5 rounded-lg" width={1000} height={1000} placeholder='blur'/>
+              <Image src={article.img} alt="Article Image" className="w-1/5 rounded-lg" width={1000} height={1000}
+              placeholder='blur' blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOcw/C+HgAE1wIMDblCWgAAAABJRU5ErkJggg=="/>
               <span className="text-xs">{article.title}</span>
             </Link>
           </li>

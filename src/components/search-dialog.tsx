@@ -17,8 +17,9 @@ export function SearchDialog({ children }: SearchDialogProps) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="inset-0 fixed bg-black/70 backdrop-blur-sm"/>
-        <Dialog.Content className="dialog-content rounded-lg overflow-hidden bg-popover animate-content-show border border-border min-h-[75%] z-50">
+        <Dialog.Content aria-describedby='searchform' className="dialog-content rounded-lg overflow-hidden bg-popover animate-content-show border border-border min-h-[75%] z-50">
           <Dialog.Title className='hidden'>Article Search Box</Dialog.Title>
+          <Dialog.Description className='hidden'>Search Dialog for finding articles on the website</Dialog.Description>
           <SearchForm setOpen={setOpen}/>
         </Dialog.Content>
       </Dialog.Portal>
