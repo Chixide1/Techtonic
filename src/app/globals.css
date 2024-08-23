@@ -68,7 +68,7 @@
   }
 
   .btn svg {
-    @apply w-[18px]
+    @apply w-5 md:w-4
   }
 }
 
