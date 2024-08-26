@@ -5,7 +5,9 @@ const pb_url = process.env.PB_URL
 
 export async function getArticles(page: number = 1, perPage: number = 5){
   const pb = new PocketBase(pb_url) as TypedPocketBase;
-  const articles = await pb.collection('articles').getList(page, perPage);
+  const articles = await pb.collection('articles').getList(page, perPage, {
+    sort: '-created'
+  });
   return articles
 }
 
