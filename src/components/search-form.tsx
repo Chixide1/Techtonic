@@ -43,7 +43,7 @@ export default function SearchForm({setOpen}: SearchFormProps) {
   }
 
   return (
-    <section className="h-full w-full" id="searchform">
+    <search className="h-full w-full" id="searchform">
       <Form {...form}>
         <form onSubmit={e => e.preventDefault()} onKeyUp={debounce(form.handleSubmit(searchArticles),1500)} className='border-b border-border py-1 px-2 relative'>
           <FormField
@@ -75,6 +75,6 @@ export default function SearchForm({setOpen}: SearchFormProps) {
           </li>
         ))}
       </ul>
-    </section>
+    </search>
   )
 }
