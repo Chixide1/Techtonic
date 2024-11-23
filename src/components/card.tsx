@@ -15,7 +15,7 @@ export async function Card({article}: CardProps) {
   return (
     <Link href={`article/${article.id}`} className="w-full max-w-md md:max-w-none border border-border rounded-lg dark:bg-card group shadow-sm">
       <article className="flex flex-col flex-1 md:flex-row p-5 gap-8 max-w-full">
-        <Image className="w-full md:max-w-56 rounded-lg object-cover max-h-36 md:max-h-32" src={imgSrc} alt="Article image" width={200} height={1} />
+        <Image className="w-full md:max-w-56 rounded-lg object-cover max-h-36 md:max-h-32" src={imgSrc} alt="Article image" width={200} height={1} priority={true}/>
         <div className="flex flex-col gap-4 flex-grow justify-between w-auto">
           <div className="flex w-full gap-6">
             <div className="text-sm font-semibold flex w-1/2 max-w-[25ch]">
