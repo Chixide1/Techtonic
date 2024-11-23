@@ -16,8 +16,12 @@ export type CardPaginationProps = {
 
 export function CardPagination({ hasNextPage, hasPrevPage, page, totalPages }: CardPaginationProps) {
 
+  if(page === undefined){
+    page = 1
+  }
+
   return (
-    page && <Pagination className="mt-4">
+    <Pagination className="mt-4">
       <PaginationContent>
           {(hasPrevPage) && 
             <PaginationItem>
@@ -29,7 +33,7 @@ export function CardPagination({ hasNextPage, hasPrevPage, page, totalPages }: C
             <PaginationLink href={'/?page=' + (i + 1)}>{i + 1}</PaginationLink>
           </PaginationItem>
         ))}
-        {(hasNextPage ) &&
+        {(hasNextPage) &&
         <PaginationItem>
           <PaginationNext href={'/?page=' + (page + 1)} />
         </PaginationItem>

@@ -1,4 +1,3 @@
-// import { notFound } from "next/navigation";
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { Card } from '@/components/card'
@@ -12,8 +11,9 @@ type PageParams = {
   }>
 }
 
+const payload = await getPayload({ config })
+
 export default async function Index(parameters: PageParams) {
-  const payload = await getPayload({ config })
   let page = (await parameters.searchParams).page
   
   const articles = await payload.find({

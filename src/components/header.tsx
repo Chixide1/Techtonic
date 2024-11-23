@@ -2,7 +2,7 @@ import { CrumpledPaperIcon, UpdateIcon } from '@radix-ui/react-icons'
 import { GithubButton } from './github-button'
 import { ThemeButton } from './theme-button'
 import Link from 'next/link'
-// import { SearchButton } from './search-button'
+import { SearchButton } from './search-button'
 
 export function Header() {
   return (
@@ -13,7 +13,7 @@ export function Header() {
         <span className='text-neutral-600 dark:text-neutral-400 pl-2 whitespace-nowrap font-semibold hidden md:inline'>/ Blog</span>
       </Link>
       <div className='flex flex-shrink-0 gap-4'>
-        {/* <SearchButton/> */}
+        <SearchButton/>
         <GithubButton/>
         <ThemeButton/>
       </div>
