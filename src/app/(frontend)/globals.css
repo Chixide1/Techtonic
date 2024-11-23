@@ -61,6 +61,7 @@
   }
 }
 
+
 @layer components {
   .btn {
     @apply p-2 rounded-md hover:bg-gray-600/20
