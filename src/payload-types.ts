@@ -120,6 +120,7 @@ export interface Article {
     };
     [k: string]: unknown;
   } | null;
+  content_html?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -227,6 +228,7 @@ export interface ArticlesSelect<T extends boolean = true> {
   category?: T;
   views?: T;
   content?: T;
+  content_html?: T;
   updatedAt?: T;
   createdAt?: T;
 }

@@ -1,3 +1,4 @@
+import { lexicalHTML } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
 
 export const Articles: CollectionConfig = {
@@ -35,5 +36,6 @@ export const Articles: CollectionConfig = {
         label: "Content",
         type: 'richText',
     },
+    lexicalHTML("content", {name: "content_html"})
   ],
 }

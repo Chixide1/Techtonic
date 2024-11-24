@@ -14,3 +14,17 @@ export async function filterArticles(query: string){
         }
     })
 }
+
+export async function getArticles(page: number){
+  return await payload.find({
+    collection: "articles",
+    page: page
+  })
+}
+
+export async function getArticle(id: number){
+  return await payload.findByID({
+    collection: "articles",
+    id: id
+  })
+}

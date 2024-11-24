@@ -1,7 +1,7 @@
 // storage-adapter-import-placeholder
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { defaultEditorFeatures, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { defaultEditorFeatures, HeadingFeature, HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -27,7 +27,8 @@ export default buildConfig({
       ...defaultEditorFeatures.filter( feature => feature.key !== "heading"),
       HeadingFeature({
         enabledHeadingSizes: ['h2', 'h3', 'h4', 'h5', 'h6']
-      })
+      }),
+      HTMLConverterFeature({})
     ]
   }),
   secret: process.env.PAYLOAD_SECRET || '',

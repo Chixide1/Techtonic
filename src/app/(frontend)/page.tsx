@@ -3,6 +3,7 @@ import config from '@payload-config'
 import { Card } from '@/components/card'
 import { Footer } from '@/components/footer'
 import { CardPagination } from '@/components/card-pagination'
+import { getArticles } from '@/lib/action'
 
 type PageParams = {
   params: Promise<{}>
@@ -14,12 +15,8 @@ type PageParams = {
 const payload = await getPayload({ config })
 
 export default async function Index(parameters: PageParams) {
-  let page = (await parameters.searchParams).page
-  
-  const articles = await payload.find({
-    collection: "articles",
-    page: page ?? 1
-  })
+  let page = (await parameters.searchParams).page  
+  const articles = await getArticles(page ?? 1)
 
   return (
     <main className="items-center w-9/12 m-auto">
