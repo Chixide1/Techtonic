@@ -1,7 +1,7 @@
 import { ArticleBody } from '@/components/article-body'
 import { ArticleHeader } from '@/components/article-header'
-import { getArticle } from '@/lib/action'
-import { error } from 'console'
+import { addView, getArticle } from '@/app/action'
+import { notFound } from 'next/navigation'
 
 type ArticleParams = {
   params: Promise<{id: number}>
@@ -11,7 +11,8 @@ type ArticleParams = {
 export default async function Page(data: ArticleParams){
   const id = (await data.params).id
   const article = await getArticle(id)
-  // const updatedArticle = await incrView(article.id)
+    .catch(notFound())
+  await addView({...article})
 
   return (
     <main className='px-6 md:px-10'>

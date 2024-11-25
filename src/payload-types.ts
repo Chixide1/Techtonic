@@ -104,7 +104,7 @@ export interface Article {
   title: string;
   thumbnail: number | Media;
   category: string;
-  views?: number | null;
+  views: number;
   content?: {
     root: {
       type: string;

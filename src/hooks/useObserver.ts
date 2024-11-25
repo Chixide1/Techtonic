@@ -7,7 +7,6 @@ export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<str
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setActiveId(entry.target.id)
-        console.log(entry.target.id)
       }
     });
   };

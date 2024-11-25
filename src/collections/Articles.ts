@@ -18,7 +18,8 @@ export const Articles: CollectionConfig = {
         label: "Thumbnail",
         type: "upload",
         relationTo: "media",
-        required: true
+        required: true,
+        displayPreview: true
     },
     {
         name: "category",
@@ -30,6 +31,8 @@ export const Articles: CollectionConfig = {
         name: "views",
         label: "Views",
         type: "number",
+        defaultValue: 0,
+        required: true
     },
     {
         name: 'content',

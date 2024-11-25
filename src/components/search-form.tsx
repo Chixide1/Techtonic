@@ -9,7 +9,7 @@ import Link from "next/link";
 import { debounce } from "lodash"
 import Image from "next/image";
 import { Article, Media } from "../payload-types"
-import { filterArticles } from "@/lib/action";
+import { filterArticles } from "@/app/action";
 import Loading from "@/app/(frontend)/loading";
 
 type SearchFormProps = {

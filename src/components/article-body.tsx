@@ -16,7 +16,7 @@ export function ArticleBody({article}: ArticleBodyPops){
   const content =  addHeadingId(article.content_html || "")
   const sections = article.content?.root.children
     .filter(child => child.tag === "h2")
-    .map((child) => child.children[0].text)
+    .map((child: any) => child.children[0].text)
 
   return (
     <div className="flex flex-col-reverse gap-8 lg:flex-row md:mt-28 max-w-full">
@@ -26,7 +26,7 @@ export function ArticleBody({article}: ArticleBodyPops){
           dangerouslySetInnerHTML={{__html: content }}
           className="[&>h2]:scroll-mt-14 py-8 md:px-6
           [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:mb-2 [&>h2]:mt-11
-          [&>p]:text-muted-foreground"
+          [&>p]:text-muted-foreground [&>img]:w-1/2 [&>img]:m-3 [&>img]:rounded-lg"
         />
         <Footer className="mt-14"/>
       </article>

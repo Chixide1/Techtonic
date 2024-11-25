@@ -25,7 +25,7 @@ export function CardPagination({ hasNextPage, hasPrevPage, page, totalPages }: C
       <PaginationContent>
           {(hasPrevPage) && 
             <PaginationItem>
-              <PaginationPrevious href={'/?page=' + (page - 1)}/>
+              <PaginationPrevious href={'/?page=' + (--page)}/>
             </PaginationItem>
           }
         {Array(totalPages).fill('_').map((_, i) => (
@@ -35,7 +35,7 @@ export function CardPagination({ hasNextPage, hasPrevPage, page, totalPages }: C
         ))}
         {(hasNextPage) &&
         <PaginationItem>
-          <PaginationNext href={'/?page=' + (page + 1)} />
+          <PaginationNext href={'/?page=' + (++page)} />
         </PaginationItem>
         }
       </PaginationContent>
