@@ -4,7 +4,6 @@ import { useObserver } from "@/hooks/useObserver"
 import React, { Ref, useCallback, useEffect, useRef, useState } from "react"
 import { Footer } from "./footer"
 import { Article } from "@/payload-types"
-import { addHeadingId } from "@/lib/utils"
 
 type ArticleBodyPops = {
   article: Article
@@ -17,7 +16,7 @@ export function ArticleBody({article}: ArticleBodyPops){
     if(el){
       refElements.current.push(el)
     }
-  },[])
+  },[refElements])
 
   return (
     <div className="flex flex-col-reverse gap-8 lg:flex-row md:mt-28 max-w-full">
