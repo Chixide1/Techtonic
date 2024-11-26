@@ -8,6 +8,7 @@ export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<str
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveId(entry.target.id)
+          console.log(entry.target)
         }
       })
     }, { rootMargin: "-40% 0% -40% 0%", threshold: 0.1 })

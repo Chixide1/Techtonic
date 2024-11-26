@@ -1,7 +1,7 @@
 'use client'
 import { ArticleContents } from "./article-contents"
 import { useObserver } from "@/hooks/useObserver"
-import React, { Ref, useEffect, useRef, useState } from "react"
+import React, { Ref, useCallback, useEffect, useRef, useState } from "react"
 import { Footer } from "./footer"
 import { Article } from "@/payload-types"
 import { addHeadingId } from "@/lib/utils"
@@ -13,14 +13,19 @@ type ArticleBodyPops = {
 export function ArticleBody({article}: ArticleBodyPops){
   const [activeId, setActiveId] = useState('')
   const refElements = useObserver(setActiveId)
-  
+  const refCallback = useCallback((el: HTMLElement) => {
+    if(el){
+      refElements.current.push(el)
+    }
+  },[])
+
   return (
     <div className="flex flex-col-reverse gap-8 lg:flex-row md:mt-28 max-w-full">
       <article className="lg:max-w-[75%]">
         <main>
         {article.sections?.map((section, i) => (
           <section
-            ref={(el) => {refElements.current[i] = el}}
+            ref={refCallback}
             className="md:px-6 py-8 rounded-lg scroll-mt-14"
             key={section.id}
             id={section.id || ""}
