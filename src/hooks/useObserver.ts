@@ -22,7 +22,7 @@ export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<str
     return () => {
       observer.disconnect()
     }
-  }, []);
+  }, [setActiveId]);
 
   return refElements
 }

@@ -32,7 +32,7 @@ export function ArticleBody({article}: ArticleBodyPops){
           >
             <h2 className="text-xl font-semibold mb-2">{section.topic}</h2>
             <div
-              className="[&>p]:text-muted-foreground [&>img]:w-1/2 [&>img]:m-3 [&>img]:rounded-lg" 
+              className="[&>p]:text-muted-foreground [&>img]:w-1/2 [&>img]:m-3 [&>img]:ml-0 [&>img]:rounded-lg" 
               dangerouslySetInnerHTML={{__html: section.content_html || ""}}
             />
           </section>
