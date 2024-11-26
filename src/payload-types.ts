@@ -105,22 +105,28 @@ export interface Article {
   thumbnail: number | Media;
   category: string;
   views: number;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  content_html?: string | null;
+  sections?:
+    | {
+        topic: string;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        content_html?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -227,8 +233,14 @@ export interface ArticlesSelect<T extends boolean = true> {
   thumbnail?: T;
   category?: T;
   views?: T;
-  content?: T;
-  content_html?: T;
+  sections?:
+    | T
+    | {
+        topic?: T;
+        content?: T;
+        content_html?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

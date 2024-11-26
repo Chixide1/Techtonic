@@ -1,33 +1,27 @@
-import { useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 
-export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<string>>){
-  const refElements = useRef<(HTMLElement | null)>(null);
-
-  const callback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setActiveId(entry.target.id)
-      }
-    });
-  };
+export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<string>>) {
+  const refElements = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(callback,{
-      rootMargin: "-10% 0% -40% 0%", threshold: 0.1 
-    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveId(entry.target.id)
+        }
+      })
+    }, { rootMargin: "-40% 0% -40% 0%", threshold: 0.1 })
 
-    refElements.current?.querySelectorAll("h2").forEach((element) => {
-      if (element) {
-        observer.observe(element);
-      }
-    });
+    if (refElements.current) {
+      refElements.current.forEach((el) => {
+        if (el) { observer.observe(el) }
+      })
+    }
 
     return () => {
-      if(refElements.current){
-        observer.disconnect()
-      }
+      observer.disconnect()
     }
-  },[callback]);
+  }, []);
 
   return refElements
 }

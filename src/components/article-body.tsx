@@ -12,25 +12,30 @@ type ArticleBodyPops = {
 
 export function ArticleBody({article}: ArticleBodyPops){
   const [activeId, setActiveId] = useState('')
-  let refElement = useObserver(setActiveId)
-  const content =  addHeadingId(article.content_html || "")
-  const sections = article.content?.root.children
-    .filter(child => child.tag === "h2")
-    .map((child: any) => child.children[0].text)
-
+  const refElements = useObserver(setActiveId)
+  
   return (
     <div className="flex flex-col-reverse gap-8 lg:flex-row md:mt-28 max-w-full">
       <article className="lg:max-w-[75%]">
-        <main
-          ref={refElement}
-          dangerouslySetInnerHTML={{__html: content }}
-          className="[&>h2]:scroll-mt-14 py-8 md:px-6
-          [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:mb-2 [&>h2]:mt-11
-          [&>p]:text-muted-foreground [&>img]:w-1/2 [&>img]:m-3 [&>img]:rounded-lg"
-        />
+        <main>
+        {article.sections?.map((section, i) => (
+          <section
+            ref={(el) => {refElements.current[i] = el}}
+            className="md:px-6 py-8 rounded-lg scroll-mt-14"
+            key={section.id}
+            id={section.id || ""}
+          >
+            <h2 className="text-xl font-semibold mb-2">{section.topic}</h2>
+            <div
+              className="[&>p]:text-muted-foreground [&>img]:w-1/2 [&>img]:m-3 [&>img]:rounded-lg" 
+              dangerouslySetInnerHTML={{__html: section.content_html || ""}}
+            />
+          </section>
+        ))}
+        </main>
         <Footer className="mt-14"/>
       </article>
-      <ArticleContents sections={sections as string[]} activeId={activeId} />
+      <ArticleContents sections={article.sections} activeId={activeId} />
     </div>
   )
 }

@@ -35,10 +35,24 @@ export const Articles: CollectionConfig = {
         required: true
     },
     {
-        name: 'content',
-        label: "Content",
-        type: 'richText',
+        name: 'sections',
+        labels: {singular: "Section", plural: "Sections"},
+        type: "array",
+        fields: [
+          {
+            name: "topic",
+            label: "Topic",
+            type: "text",
+            required: true
+          },
+          {
+            name: "content",
+            label: "Content",
+            type: "richText",
+            required: true
+          },
+          lexicalHTML("content", {name: "content_html"})
+        ]
     },
-    lexicalHTML("content", {name: "content_html"})
   ],
 }
