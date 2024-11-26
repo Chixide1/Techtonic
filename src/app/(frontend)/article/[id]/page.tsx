@@ -10,8 +10,7 @@ type ArticleParams = {
 
 export default async function Page(data: ArticleParams){
   const id = (await data.params).id
-  const article = await getArticle(id)
-    .catch(notFound())
+  const article = await getArticle(id).catch(() => notFound())
   await addView({...article})
 
   return (
