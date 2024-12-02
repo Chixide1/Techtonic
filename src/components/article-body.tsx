@@ -1,7 +1,6 @@
 'use client'
 import { ArticleContents } from "./article-contents"
-import { useObserver } from "@/hooks/useObserver"
-import React, { Ref, useCallback, useEffect, useRef, useState } from "react"
+import React, { useCallback, useRef} from "react"
 import { Footer } from "./footer"
 import { Article } from "@/payload-types"
 
