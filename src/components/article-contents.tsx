@@ -1,4 +1,6 @@
+import { useObserver } from "@/hooks/useObserver";
 import Link from "next/link"
+import { RefObject, useState } from "react";
 
 interface Section {
   topic: string;
@@ -23,10 +25,12 @@ interface Section {
 
 type ArticleContentsProps = {
   sections?: Section[] | null,
-  activeId: string
+  sectionsRef: RefObject<(HTMLElement | null)[]>
 }
 
-export function ArticleContents({ sections, activeId }: ArticleContentsProps) {
+export function ArticleContents({ sections, sectionsRef}: ArticleContentsProps) {
+  const [activeId, setActiveId] = useState('')
+  useObserver(sectionsRef,setActiveId)
 
   return (
     <aside className="w-auto pt-10 hidden lg:block">

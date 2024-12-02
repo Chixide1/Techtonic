@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
+import { RefObject, useEffect, useRef } from "react";
 
-export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<string>>) {
-  const refElements = useRef<(HTMLElement | null)[]>([]);
+export function useObserver(refElements: RefObject<(HTMLElement | null)[]>,setActiveId: React.Dispatch<React.SetStateAction<string>>) {
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -23,6 +22,4 @@ export function useObserver(setActiveId: React.Dispatch<React.SetStateAction<str
       observer.disconnect()
     }
   }, [setActiveId]);
-
-  return refElements
 }

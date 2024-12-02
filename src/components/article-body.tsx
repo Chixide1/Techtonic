@@ -10,8 +10,7 @@ type ArticleBodyPops = {
 }
 
 export function ArticleBody({article}: ArticleBodyPops){
-  const [activeId, setActiveId] = useState('')
-  const refElements = useObserver(setActiveId)
+  const refElements = useRef<(HTMLElement | null)[]>([]);
   const refCallback = useCallback((el: HTMLElement) => {
     if(el){
       refElements.current.push(el)
@@ -39,7 +38,7 @@ export function ArticleBody({article}: ArticleBodyPops){
         </main>
         <Footer className="mt-14"/>
       </article>
-      <ArticleContents sections={article.sections} activeId={activeId} />
+      <ArticleContents sectionsRef={refElements} sections={article.sections} />
     </div>
   )
 }
