@@ -21,5 +21,5 @@ export function useObserver(refElements: RefObject<(HTMLElement | null)[]>,setAc
     return () => {
       observer.disconnect()
     }
-  }, [setActiveId]);
+  }, [refElements, setActiveId]);
 }
