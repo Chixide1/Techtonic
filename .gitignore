@@ -39,5 +39,5 @@ yarn-error.log*
 next-env.d.ts
 
 # Custom
-.env
-*.db
+# .env
+# *.db
