@@ -5,10 +5,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
-export const title = "Techtonic Blog"
 
-const metadata: Metadata = {
-  title: title,
+export const metadata: Metadata = {
+  title: "Techtonic Blog",
   description: "An example blog application",
 };
 
