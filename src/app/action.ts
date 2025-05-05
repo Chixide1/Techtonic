@@ -23,17 +23,29 @@ export async function getArticles(page: number = 1){
   })
 }
 
-export async function getArticle(id: number){
-  return await payload.findByID({
+export async function getArticle(id: string){
+  const results = await payload.find({
     collection: "articles",
-    id: id
+    pagination: false,
+    limit: 1,
+    where: {
+      id : {
+        equals: id
+      }
+    }
   })
+  
+  return results.docs[0];
 }
 
-export async function addView({ id, views }: { id: number, views: number }){
+export async function addView({ id, views }: { id: string, views: number }){
   return await payload.update({
     collection: "articles",
-    id: id,
+    where: {
+      id: {
+        equals: id
+      }
+    },
     data: {
       views: views + 1
     }

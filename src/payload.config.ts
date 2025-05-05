@@ -1,7 +1,8 @@
 // storage-adapter-import-placeholder
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { defaultEditorFeatures, HeadingFeature, HTMLConverterFeature, lexicalEditor, TreeViewFeature } from '@payloadcms/richtext-lexical'
+import { defaultEditorFeatures, HeadingFeature, 
+  HTMLConverterFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -29,7 +30,6 @@ export default buildConfig({
         enabledHeadingSizes: ['h2', 'h3', 'h4', 'h5', 'h6']
       }),
       HTMLConverterFeature({}),
-      TreeViewFeature()
     ]
   }),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -39,12 +39,16 @@ export default buildConfig({
   db: mongooseAdapter({ 
     url: process.env.DATABASE_URI || '',
     connectOptions: {
-      dbName: "techtonic"
+      dbName: "techtonic",
+      retryWrites: false,
+      serverSelectionTimeoutMS: 5000,
+      w: 'majority',
+      maxPoolSize: 10,
+      socketTimeoutMS: 60000
     }
   }),
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    // storage-adapter-placeholder
   ],
 })
