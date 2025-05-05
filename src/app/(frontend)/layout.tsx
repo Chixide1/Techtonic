@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Techtonic Blog",
-  description: "An example blog application",
+  description: "An example blog application"
 };
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {

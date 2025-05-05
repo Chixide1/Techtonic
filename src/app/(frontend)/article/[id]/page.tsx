@@ -18,7 +18,7 @@ export default async function Page(data: ArticleParams){
   return (
     <main className='px-6 md:px-10'>
       <Head>
-        <title>{article.title}</title>
+        <title key="title">{article.title}</title>
       </Head>
       <ArticleHeader article={article}/>
       <ArticleBody article={article}/>

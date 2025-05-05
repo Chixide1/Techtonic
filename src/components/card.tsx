@@ -1,7 +1,7 @@
 import { EyeOpenIcon, LayersIcon } from "@radix-ui/react-icons"
 import Link  from "next/link"
 import Image from "next/image"
-import { Article, Media } from "../payload-types"
+import { Article, Media } from '@/payload-types'
 
 type CardProps = {
   article: Article
