@@ -40,15 +40,12 @@ export default buildConfig({
     url: process.env.DATABASE_URI || '',
     connectOptions: {
       dbName: "techtonic",
-      retryWrites: false,
-      serverSelectionTimeoutMS: 5000,
-      w: 'majority',
-      maxPoolSize: 10,
-      socketTimeoutMS: 60000
-    }
+    },
+    transactionOptions: false,
   }),
   sharp,
   plugins: [
     payloadCloudPlugin(),
   ],
+  indexSortableFields: true,
 })

@@ -1,6 +1,6 @@
 'use server'
 
-import { getPayload} from 'payload'
+import { getPayload } from 'payload'
 import config from '@payload-config'
 
 const payload = await getPayload({ config })
@@ -25,18 +25,10 @@ export async function getArticles(page: number = 1){
 }
 
 export async function getArticle(id: string){
-  const results = await payload.find({
+  return await payload.findByID({
     collection: "articles",
-    pagination: false,
-    limit: 1,
-    where: {
-      id : {
-        equals: id
-      }
-    }
+    id: id,
   })
-  
-  return results.docs[0];
 }
 
 export async function addView({ id, views }: { id: string, views: number }){
