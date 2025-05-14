@@ -11,8 +11,6 @@ type PageParams = {
   }>
 }
 
-// const payload = await getPayload({ config })
-
 export default async function Index(parameters: PageParams) {
   let page = (await parameters.searchParams).page  
   const articles = await getArticles(page ?? 1)
