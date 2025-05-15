@@ -28,6 +28,7 @@ export async function getArticle(id: string){
   return await payload.findByID({
     collection: "articles",
     id: id,
+    depth: 1,
   })
 }
 
