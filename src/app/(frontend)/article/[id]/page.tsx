@@ -20,7 +20,7 @@ export async function generateMetadata(data: ArticleParams): Promise<Metadata> {
     openGraph: {
       title: article.title,
       description: article.category,
-      images: [{url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://techtonic.ckdoestech.com") + (article.thumbnail as Media).url, width: 1200, height: 630, alt: article.title}],
+      images: [{url: getThumbnailUrl(article.thumbnail), width: 1200, height: 630, alt: article.title}],
       siteName: 'Techtonic',
     },
   };
@@ -38,4 +38,10 @@ export default async function Page(data: ArticleParams){
       <ArticleBody article={article}/>
     </main>
   )
+}
+
+function getThumbnailUrl(thumbnail: Media | string) {
+  thumbnail = thumbnail as Media
+  const mediaPath = thumbnail.url + `?v=${thumbnail.id}`
+  return (process.env.NEXT_PUBLIC_SITE_URL ?? "https://techtonic.ckdoestech.com") + mediaPath
 }

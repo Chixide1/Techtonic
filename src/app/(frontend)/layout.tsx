@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Techtonic Blog",
     description: "An example blog application",
-    images: [{url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://techtonic.ckdoestech.com"}/techtonic.jpg`, width: 1200, height: 630, alt: "Techtonic Blog"}],
+    images: [{url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://techtonic.ckdoestech.com"}/techtonic.jpg?v=1`, width: 1200, height: 630, alt: "Techtonic Blog"}],
     siteName: 'Techtonic',
   },
 };
