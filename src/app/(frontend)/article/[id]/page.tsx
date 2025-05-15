@@ -42,6 +42,6 @@ export default async function Page(data: ArticleParams){
 
 function getThumbnailUrl(thumbnail: Media | string) {
   thumbnail = thumbnail as Media
-  const mediaPath = thumbnail.url + `?v=${thumbnail.id}`
+  const mediaPath = thumbnail.url + `?v=${thumbnail.updatedAt}`
   return (process.env.NEXT_PUBLIC_SITE_URL ?? "https://techtonic.ckdoestech.com") + mediaPath
 }
