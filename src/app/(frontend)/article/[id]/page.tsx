@@ -20,7 +20,7 @@ export async function generateMetadata(data: ArticleParams): Promise<Metadata> {
     openGraph: {
       title: article.title,
       description: article.category,
-      images: [{url: "https://techtonic.ckdoestech.com/" + (article.thumbnail as Media).url, width: 1200, height: 630, alt: article.title}],
+      images: [{url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://techtonic.ckdoestech.com") + (article.thumbnail as Media).url, width: 1200, height: 630, alt: article.title}],
       siteName: 'Techtonic',
     },
   };
