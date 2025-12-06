@@ -33,7 +33,7 @@ export default async function Page(data: ArticleParams){
   await addView({...article})
 
   return (
-    <main className='px-6 md:px-10'>
+    <main className='px-6 md:px-10 max-w-6xl mx-auto'>
       <ArticleHeader article={article}/>
       <ArticleBody article={article}/>
     </main>
