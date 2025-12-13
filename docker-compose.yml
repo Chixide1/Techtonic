@@ -8,3 +8,6 @@ services:
     environment:
       - NODE_ENV=production
     restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false

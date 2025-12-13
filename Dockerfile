@@ -12,8 +12,8 @@ RUN yarn install --frozen-lockfile
 # Copy all source files
 COPY . .
 
-# Build Next.js app
-RUN yarn build
+# Build Next.js app with webpack
+RUN yarn build --webpack
 
 
 # Production stage
