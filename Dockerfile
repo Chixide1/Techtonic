@@ -21,9 +21,6 @@ FROM node:iron-trixie-slim
 
 WORKDIR /app
 
-# Set to production
-ENV NODE_ENV=production
-
 # Copy dependency files
 COPY package.json yarn.lock ./
 
